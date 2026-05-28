@@ -1,0 +1,13 @@
+# Dev Multistage build for local container runner
+FROM golang:1.22-alpine AS builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-w -s" -o /app/api ./cmd/api
+
+FROM alpine:latest
+WORKDIR /app
+COPY --from=builder /app/api /app/api
+EXPOSE 8080
+ENTRYPOINT ["/app/api"]
