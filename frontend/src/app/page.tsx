@@ -191,19 +191,19 @@ export default function Home() {
         </header>
 
         {/* Input Form */}
-        <form onSubmit={handleAddTask} className="flex gap-2 mb-6">
+        <form onSubmit={handleAddTask} className="flex flex-row gap-2 mb-6 w-full">
           <input
             type="text"
             value={newTitle}
             onChange={(e) => setNewTitle(e.target.value)}
             placeholder="Apa tugas harianmu hari ini, bro?"
             disabled={submitting}
-            className="flex-1 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all text-slate-200 placeholder:text-slate-500 disabled:opacity-50"
+            className="flex-1 min-w-0 bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition-all text-slate-200 placeholder:text-slate-500 disabled:opacity-50"
           />
           <button
             type="submit"
             disabled={submitting || !newTitle.trim()}
-            className="bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-800/50 disabled:text-indigo-400/50 text-white font-medium text-sm px-5 py-3 rounded-xl transition-all flex items-center gap-2 active:scale-95 disabled:active:scale-100 shadow-lg shadow-indigo-600/10"
+            className="shrink-0 bg-indigo-600 hover:bg-indigo-500 disabled:bg-indigo-800/50 disabled:text-indigo-400/50 text-white font-medium text-sm px-5 py-3 rounded-xl transition-all flex items-center gap-2 active:scale-95 disabled:active:scale-100 shadow-lg shadow-indigo-600/10"
           >
             {submitting ? (
               <Loader2 className="h-4 w-4 animate-spin" />
